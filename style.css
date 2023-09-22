@@ -13,7 +13,7 @@ body {
 /* Header Styles */
 header {
     background: linear-gradient(301deg, #7676c7, #000);
-    color: #xxx;
+    color: #0000FF;
     text-align: center;
     padding: 69px;
 }
@@ -54,7 +54,7 @@ nav a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    transition: background-color 0.3s;  /* Smooth transition for hover effect */
+    transition: background-color 20.0s;  /* Smooth transition for hover effect */
 }
 
 nav a:hover {
