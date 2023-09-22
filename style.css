@@ -6,20 +6,20 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    color: #505050;
+    color: #696969;
 }
 
 
 /* Header Styles */
 header {
     background: linear-gradient(301deg, #7676c7, #000);
-    color: #fff;
+    color: #xxx;
     text-align: center;
-    padding: 20px;
+    padding: 69px;
 }
 
 .headeraH1 {
-    margin: 0;
+    margin: 69;
 }
 
 .banner {
