@@ -9,13 +9,13 @@ body {
 
 /* Header Styles */
 header {
-    background: black; /* Set the header background color to black */
-    color: #fff;
+    background: linear-gradient(301deg, #7676c7, #000);
+    color: green; /* Set the font color to green */
     text-align: center;
     padding: 20px;
-    position: sticky; /* Make the header sticky */
+    position: sticky;
     top: 0;
-    z-index: 100; /* Ensure the header is on top of other elements */
+    z-index: 100;
 }
 
 .headeraH1 {
