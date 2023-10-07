@@ -1,19 +1,21 @@
 /* Reset Styles */
-
 body {
-    background: #000; /* Black background */
+    background: pink; /* Set the background color to pink */
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    color: #fff; /* White font color */
+    color: red; /* Set the font color to red */
 }
 
 /* Header Styles */
 header {
-    background: linear-gradient(301deg, #7676c7, #000);
+    background: black; /* Set the header background color to black */
     color: #fff;
     text-align: center;
     padding: 20px;
+    position: sticky; /* Make the header sticky */
+    top: 0;
+    z-index: 100; /* Ensure the header is on top of other elements */
 }
 
 .headeraH1 {
@@ -33,7 +35,7 @@ header {
 
 /* Navigation Styles */
 nav ul {
-    background-color: #000; /* Black background */
+    background-color: black; /* Set the background color of the navigation to black */
     color: #fff;
     text-align: center;
     list-style-type: none;
@@ -55,7 +57,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #333; /* Darker shade for hover */
+    background-color: #505050; /* Darker shade for hover */
 }
 
 /* Banner Styles */
@@ -86,7 +88,6 @@ main {
     padding: 2rem;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: #333; /* Font color for services section */
 }
 
 main h3 {
@@ -147,7 +148,7 @@ main h3 {
     display: inline-block;
     padding: 10px 20px;
     background-color: #007BFF;
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
@@ -161,7 +162,7 @@ main h3 {
 
 /* Footer Styles */
 footer {
-    background-color: #000; /* Black background */
+    background-color: black; /* Set the footer background color to black */
     color: #fff;
     text-align: center;
     padding: 20px;
