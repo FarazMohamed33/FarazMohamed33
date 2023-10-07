@@ -97,20 +97,26 @@ main h3 {
 /* Service Columns */
 .services-container {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
 }
 
 .service-column {
-    flex-basis: calc(25% - 20px);
-    max-width: calc(25% - 20px);
+    flex-basis: calc(50% - 20px);
+    max-width: calc(50% - 20px);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
+/* Media Queries for Responsiveness */
+@media (max-width: 800px) {
+    .service-column {
+        flex-basis: calc(100% - 20px);
+        max-width: calc(100% - 20px);
+    }
+}
 .service-column img {
     width: 180px;
     height: auto;
