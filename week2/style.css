@@ -118,7 +118,7 @@ main h3 {
     }
 }
 .service-column img {
-    width: 250px; /* Increase the width to make the images larger */
+    width: 300px; /* Increase the width to make the images larger */
     height: auto;
     margin-bottom: 10px;
 }
