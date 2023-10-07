@@ -9,8 +9,8 @@ body {
 
 /* Header Styles */
 header {
-    background: linear-gradient(301deg, #7676c7, #000);
-    color: green; /* Set the font color to green */
+    background: green; /* Set the background color to green */
+    color: black; /* Set the font color to black */
     text-align: center;
     padding: 20px;
     position: sticky;
