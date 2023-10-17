@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .gallery-container {
+      margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
       justify-content: center; /* Center the images horizontally */
@@ -14,11 +15,8 @@
     }
 
     .gallery-img {
-      width: 25%; /* Set a fixed size for the images */
+      width: 24%; /* Set a fixed size for the images */
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .gallery-controls {
@@ -40,7 +38,10 @@
       -webkit-user-select: none;
       display: inline-block; /* Make them inline */
       text-align: center;
-      margin: 0 10px; /* Add space around the buttons */
+    }
+
+    .next {
+      margin-left: 20px; /* Add some space between buttons */
     }
   </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,7 +82,7 @@
         <div class="gallery-img" id="img5">
           <img src="images/5.jpeg" alt="Spa Image 5">
         </div>
-        <div class "gallery-img" id="img6">
+        <div class="gallery-img" id="img6">
           <img src="images/6.jpeg" alt="Spa Image 6">
         </div>
         <div class="gallery-img" id="img7">
