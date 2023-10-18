@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Registration Form</title>
-  <link rel="stylesheet" href="style.css">
   <style>
     /* Add any additional CSS styles for your form here */
+    /* Add a success class for successful inputs */
+    .success {
+      border: 2px solid #09c372; /* Green border for success */
+    }
   </style>
 </head>
 <body>
@@ -54,6 +57,7 @@
       } else {
         usernameError.textContent = "";
         username.classList.remove("error");
+        username.classList.add("success"); // Success indicator
       }
 
       // Validate email
@@ -67,6 +71,7 @@
       } else {
         emailError.textContent = "";
         email.classList.remove("error");
+        email.classList.add("success"); // Success indicator
       }
 
       // Validate password
@@ -79,6 +84,7 @@
       } else {
         passwordError.textContent = "";
         password.classList.remove("error");
+        password.classList.add("success"); // Success indicator
       }
 
       // Validate confirm password
@@ -91,6 +97,7 @@
       } else {
         confirmPasswordError.textContent = "";
         confirmPassword.classList.remove("error");
+        confirmPassword.classList.add("success"); // Success indicator
       }
 
       // If all fields are valid, allow the form to submit
