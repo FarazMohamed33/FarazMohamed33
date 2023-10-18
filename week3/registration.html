@@ -35,91 +35,86 @@
   </div>
 
   <script>
-  // Function to validate the email format
-  function validateEmail(email) {
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return emailPattern.test(email);
-  }
+    const username = document.getElementById("username");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirm-password");
+    const usernameError = document.getElementById("username-error");
+    const emailError = document.getElementById("email-error");
+    const passwordError = document.getElementById("password-error");
+    const confirmPasswordError = document.getElementById("confirm-password-error");
+    const submitButton = document.getElementById("submit-button");
 
-  // Function to validate the password length
-  function validatePassword(password) {
-    return password.length >= 8;
-  }
+    // Function to validate the form
+    function validateForm() {
+      // Validate username
+      if (username.value.trim() === "") {
+        usernameError.textContent = "Username cannot be empty";
+        username.classList.add("error");
+      } else {
+        usernameError.textContent = "";
+        username.classList.remove("error");
+      }
 
-  // Function to display success or error style for an input element
-  function setInputValidation(inputElement, isValid) {
-    if (isValid) {
-      inputElement.classList.remove("error");
-      inputElement.classList.add("success");
-    } else {
-      inputElement.classList.remove("success");
-      inputElement.classList.add("error");
+      // Validate email
+      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (email.value.trim() === "") {
+        emailError.textContent = "Email cannot be empty";
+        email.classList.add("error");
+      } else if (!emailPattern.test(email.value.trim())) {
+        emailError.textContent = "Invalid email format";
+        email.classList.add("error");
+      } else {
+        emailError.textContent = "";
+        email.classList.remove("error");
+      }
+
+      // Validate password
+      if (password.value === "") {
+        passwordError.textContent = "Password cannot be empty";
+        password.classList.add("error");
+      } else if (password.value.length < 8) {
+        passwordError.textContent = "Password must be at least 8 characters";
+        password.classList.add("error");
+      } else {
+        passwordError.textContent = "";
+        password.classList.remove("error");
+      }
+
+      // Validate confirm password
+      if (confirmPassword.value === "") {
+        confirmPasswordError.textContent = "Confirm Password cannot be empty";
+        confirmPassword.classList.add("error");
+      } else if (confirmPassword.value !== password.value) {
+        confirmPasswordError.textContent = "Passwords do not match";
+        confirmPassword.classList.add("error");
+      } else {
+        confirmPasswordError.textContent = "";
+        confirmPassword.classList.remove("error");
+      }
+
+      // If all fields are valid, allow the form to submit
+      if (
+        username.value &&
+        email.value &&
+        emailPattern.test(email.value) &&
+        password.value &&
+        password.value.length >= 8 &&
+        confirmPassword.value &&
+        confirmPassword.value === password.value
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     }
-  }
 
-  // Function to handle form submission
-  function validateForm(event) {
-    event.preventDefault(); // Prevent the form from submitting
-
-    // Get form input elements
-    const usernameInput = document.getElementById("username");
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
-    const confirmPasswordInput = document.getElementById("confirmPassword");
-
-    // Validate username (not empty)
-    const isUsernameValid = usernameInput.value.trim() !== "";
-    setInputValidation(usernameInput, isUsernameValid);
-
-    // Validate email (not empty and correct format)
-    const isEmailValid = emailInput.value.trim() !== "" && validateEmail(emailInput.value);
-    setInputValidation(emailInput, isEmailValid);
-
-    // Validate password (not empty and at least 8 characters)
-    const isPasswordValid = passwordInput.value !== "" && validatePassword(passwordInput.value);
-    setInputValidation(passwordInput, isPasswordValid);
-
-    // Validate confirm password (not empty and matches password)
-    const isConfirmPasswordValid = confirmPasswordInput.value === passwordInput.value && confirmPasswordInput.value !== "";
-    setInputValidation(confirmPasswordInput, isConfirmPasswordValid);
-
-    // If all fields are valid, you can submit the form
-    if (isUsernameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid) {
-      alert("Form submitted successfully!"); // You can replace this with your desired action
-    } else {
-      alert("Form contains errors. Please correct them.");
-    }
-  }
-
-  // Add event listeners to each input field for real-time validation
-  const usernameInput = document.getElementById("username");
-  const emailInput = document.getElementById("email");
-  const passwordInput = document.getElementById("password");
-  const confirmPasswordInput = document.getElementById("confirmPassword");
-
-  usernameInput.addEventListener("blur", () => {
-    const isUsernameValid = usernameInput.value.trim() !== "";
-    setInputValidation(usernameInput, isUsernameValid);
-  });
-
-  emailInput.addEventListener("blur", () => {
-    const isEmailValid = emailInput.value.trim() !== "" && validateEmail(emailInput.value);
-    setInputValidation(emailInput, isEmailValid);
-  });
-
-  passwordInput.addEventListener("blur", () => {
-    const isPasswordValid = passwordInput.value !== "" && validatePassword(passwordInput.value);
-    setInputValidation(passwordInput, isPasswordValid);
-  });
-
-  confirmPasswordInput.addEventListener("blur", () => {
-    const isConfirmPasswordValid = confirmPasswordInput.value === passwordInput.value && confirmPasswordInput.value !== "";
-    setInputValidation(confirmPasswordInput, isConfirmPasswordValid);
-  });
-
-  // Add a submit event listener to the form
-  const form = document.getElementById("registration-form");
-  form.addEventListener("submit", validateForm);
-</script>
+    // Add form submission event listener
+    submitButton.addEventListener("click", (event) => {
+      if (!validateForm()) {
+        event.preventDefault(); // Prevent form submission if validation fails
+      }
+    });
+  </script>
 </body>
 </html>
