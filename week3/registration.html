@@ -2,130 +2,117 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Form Validation</title>
-  <link rel="stylesheet" href="style.css"> <!-- Include your CSS file here -->
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    /* Add styles as needed for your form */
+    /* Add any additional CSS styles for your form here */
   </style>
 </head>
 <body>
   <div id="form">
     <h1>Registration Form</h1>
-    <form id="registrationForm" action="#" method="post">
-      <div class="input-control">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username">
-        <div class="error" id="usernameError"></div>
-      </div>
-      <div class="input-control">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email">
-        <div class="error" id="emailError"></div>
-      </div>
-      <div class="input-control">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password">
-        <div class="error" id="passwordError"></div>
-      </div>
-      <div class="input-control">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" name="confirmPassword">
-        <div class="error" id="confirmPasswordError"></div>
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    <div class="input-control">
+      <label for="username">Username:</label>
+      <input type="text" id="username" placeholder="Enter your username">
+      <div class="error" id="username-error"></div>
+    </div>
+    <div class="input-control">
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Enter your email">
+      <div class="error" id="email-error"></div>
+    </div>
+    <div class="input-control">
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="Enter your password">
+      <div class="error" id="password-error"></div>
+    </div>
+    <div class="input-control">
+      <label for="confirm-password">Confirm Password:</label>
+      <input type="password" id="confirm-password" placeholder="Confirm your password">
+      <div class="error" id="confirm-password-error"></div>
+    </div>
+    <button id="submit-button">Submit</button>
   </div>
 
   <script>
-    const form = document.getElementById('registrationForm');
-    const username = document.getElementById('username');
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
-    const confirmPassword = document.getElementById('confirmPassword');
-    const usernameError = document.getElementById('usernameError');
-    const emailError = document.getElementById('emailError');
-    const passwordError = document.getElementById('passwordError');
-    const confirmPasswordError = document.getElementById('confirmPasswordError');
+    const username = document.getElementById("username");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirm-password");
+    const usernameError = document.getElementById("username-error");
+    const emailError = document.getElementById("email-error");
+    const passwordError = document.getElementById("password-error");
+    const confirmPasswordError = document.getElementById("confirm-password-error");
+    const submitButton = document.getElementById("submit-button");
 
-    // Function to validate email format
-    function isValidEmail(email) {
+    // Function to validate the form
+    function validateForm() {
+      // Validate username
+      if (username.value.trim() === "") {
+        usernameError.textContent = "Username cannot be empty";
+        username.classList.add("error");
+      } else {
+        usernameError.textContent = "";
+        username.classList.remove("error");
+      }
+
+      // Validate email
       const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-      return emailPattern.test(email);
-    }
-
-    function validateUsername() {
-      if (username.value.trim() === '') {
-        usernameError.textContent = 'Username is required';
-        username.classList.add('error');
+      if (email.value.trim() === "") {
+        emailError.textContent = "Email cannot be empty";
+        email.classList.add("error");
+      } else if (!emailPattern.test(email.value.trim())) {
+        emailError.textContent = "Invalid email format";
+        email.classList.add("error");
       } else {
-        usernameError.textContent = '';
-        username.classList.remove('error');
-        username.classList.add('success');
+        emailError.textContent = "";
+        email.classList.remove("error");
       }
-    }
 
-    function validateEmail() {
-      if (email.value.trim() === '') {
-        emailError.textContent = 'Email is required';
-        email.classList.add('error');
-      } else if (!isValidEmail(email.value)) {
-        emailError.textContent = 'Invalid email format';
-        email.classList.add('error');
-      } else {
-        emailError.textContent = '';
-        email.classList.remove('error');
-        email.classList.add('success');
-      }
-    }
-
-    function validatePassword() {
-      if (password.value.trim() === '') {
-        passwordError.textContent = 'Password is required';
-        password.classList.add('error');
+      // Validate password
+      if (password.value === "") {
+        passwordError.textContent = "Password cannot be empty";
+        password.classList.add("error");
       } else if (password.value.length < 8) {
-        passwordError.textContent = 'Password must be at least 8 characters';
-        password.classList.add('error');
+        passwordError.textContent = "Password must be at least 8 characters";
+        password.classList.add("error");
       } else {
-        passwordError.textContent = '';
-        password.classList.remove('error');
-        password.classList.add('success');
+        passwordError.textContent = "";
+        password.classList.remove("error");
       }
-    }
 
-    function validateConfirmPassword() {
-      if (confirmPassword.value.trim() === '') {
-        confirmPasswordError.textContent = 'Confirm Password is required';
-        confirmPassword.classList.add('error');
+      // Validate confirm password
+      if (confirmPassword.value === "") {
+        confirmPasswordError.textContent = "Confirm Password cannot be empty";
+        confirmPassword.classList.add("error");
       } else if (confirmPassword.value !== password.value) {
-        confirmPasswordError.textContent = 'Passwords do not match';
-        confirmPassword.classList.add('error');
+        confirmPasswordError.textContent = "Passwords do not match";
+        confirmPassword.classList.add("error");
       } else {
-        confirmPasswordError.textContent = '';
-        confirmPassword.classList.remove('error');
-        confirmPassword.classList.add('success');
+        confirmPasswordError.textContent = "";
+        confirmPassword.classList.remove("error");
+      }
+
+      // If all fields are valid, allow the form to submit
+      if (
+        username.value &&
+        email.value &&
+        emailPattern.test(email.value) &&
+        password.value &&
+        password.value.length >= 8 &&
+        confirmPassword.value &&
+        confirmPassword.value === password.value
+      ) {
+        return true;
+      } else {
+        return false;
       }
     }
 
-    username.addEventListener('blur', validateUsername);
-    email.addEventListener('blur', validateEmail);
-    password.addEventListener('blur', validatePassword);
-    confirmPassword.addEventListener('blur', validateConfirmPassword);
-
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      validateUsername();
-      validateEmail();
-      validatePassword();
-      validateConfirmPassword();
-
-      if (
-        !username.classList.contains('error') &&
-        !email.classList.contains('error') &&
-        !password.classList.contains('error') &&
-        !confirmPassword.classList.contains('error')
-      ) {
-        // Form is valid, you can submit it (for example, send it to the server)
-        alert('Form submitted successfully');
+    // Add form submission event listener
+    submitButton.addEventListener("click", (event) => {
+      if (!validateForm()) {
+        event.preventDefault(); // Prevent form submission if validation fails
       }
     });
   </script>
