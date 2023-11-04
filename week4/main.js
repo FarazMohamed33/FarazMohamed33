@@ -13,7 +13,7 @@ btn.addEventListener("click", () => {
         alert("Please enter a city name.");
     } else {
         // Step 5: Make an HTTP request to OpenWeatherMap API
-        const apiKey = "YOUR_API_KEY"; // Replace with your actual API key
+        const apiKey = "e7f487ce30cf9564d433b5f571054411";
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
 
         fetch(apiUrl)
